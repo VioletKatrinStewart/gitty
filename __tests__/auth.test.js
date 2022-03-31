@@ -1,9 +1,9 @@
 const pool = require('../lib/utils/pool');
 const setup = require('../data/setup');
-const request = require('supertest');
-const app = require('../lib/app');
+//const request = require('supertest');
+//const app = require('../lib/app');
 
-describe('gitty routes', () => {
+describe('auth routes', () => {
   beforeEach(() => {
     return setup(pool);
   });
