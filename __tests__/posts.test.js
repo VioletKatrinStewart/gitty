@@ -41,15 +41,9 @@ describe('posts routes', () => {
     });
   });
 
-  it.skip('gets a list of posts', async () => {
+  it('gets a list of posts', async () => {
     const agent = request.agent(app);
-    const github_user = {
-      username: 'violet_github',
-      email: 'violet@email.com',
-      avatar: 'avatar_link',
-    };
-    await agent.get('/api/v1/github').send(github_user);
-    await agent.get('/api/v1/github').send(github_user);
+    await agent.get('/api/v1/github/login/callback?code=42').redirects(1);
 
     const post1 = {
       text: 'this is a funny tweet',
