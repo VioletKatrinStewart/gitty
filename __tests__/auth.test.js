@@ -29,4 +29,12 @@ describe('auth routes', () => {
 
     expect(req.req.path).toEqual('/api/v1/posts');
   });
+
+  it('should logout user with delete', async () => {
+    const res = await request.agent(app).delete('/api/v1/github');
+    expect(res.body).toEqual({
+      message: 'Signed out',
+      success: true,
+    });
+  });
 });
