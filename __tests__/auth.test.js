@@ -33,7 +33,7 @@ describe('auth routes', () => {
   it('should logout user with delete', async () => {
     const res = await request.agent(app).delete('/api/v1/github');
     expect(res.body).toEqual({
-      message: 'Signed out',
+      message: '',
       success: true,
     });
   });

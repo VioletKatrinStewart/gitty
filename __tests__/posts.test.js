@@ -2,6 +2,9 @@ const pool = require('../lib/utils/pool');
 const setup = require('../data/setup');
 const request = require('supertest');
 const app = require('../lib/app');
+const GithubUser = require('../lib/models/GithubUser');
+
+jest.mock('../lib/utils/github');
 
 describe('posts routes', () => {
   beforeEach(() => {
@@ -23,15 +26,9 @@ describe('posts routes', () => {
     });
   });
 
-  it.skip('creates a post because user is logged in', async () => {
+  it('creates a post because user is logged in', async () => {
     const agent = request.agent(app);
-    const github_user = {
-      username: 'violet_github',
-      email: 'violet@email.com',
-      avatar: 'avatar_link',
-    };
-    await agent.get('/api/v1/github').send(github_user);
-    await agent.get('/api/v1/github').send(github_user);
+    await agent.get('/api/v1/github/login/callback?code=42').redirects(1);
 
     const expected = {
       text: 'this is a funny tweet',
