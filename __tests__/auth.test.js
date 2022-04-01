@@ -21,7 +21,7 @@ describe('auth routes', () => {
     );
   });
 
-  it('should login and redirect users to /api/v1/github', async () => {
+  it('should login and redirect users to posts', async () => {
     const req = await request
       .agent(app)
       .get('/api/v1/github/login/callback?code=42')
